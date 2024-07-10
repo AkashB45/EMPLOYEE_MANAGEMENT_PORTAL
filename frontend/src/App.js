@@ -9,10 +9,11 @@ import UserLogin from './components/Login/UserLogin';
 import AdminLogin from './components/Login/AdminLogin';
 import ForgotPassword from './components/Login/ForgotPassword';
 import SignUp from './components/SignUp/SignUp';
-import DashBoard from './components/DashBoard/DashBoard';
 import UserRegisteration from './components/UserRegisteration/UserRegisteration';
 import JobListingPage from './components/JobListingPage/JobListingPage';
 import Job from './components/JobListingPage/Job';
+import EditJob from './components/JobListingPage/EditJob';
+import Home from './components/HomePage/Home';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +34,12 @@ function App() {
       
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <Routes>
-        <Route path="/DashBoard" element={<DashBoard/>} />
+        <Route path="/Home" element={<Home/>} />
         <Route path="/Application" element={<ApplicationForm />} />
-        <Route path="/JobList" element={<JobListingPage />}>
-        <Route path="/JobList/:id" element={<Job />} />
+        <Route path="/JobList">
+        <Route index element={<JobListingPage />} />
+        <Route path=":id" element={<Job />} />
+        <Route path="edit/:id" element={<EditJob />} />
         </Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />
