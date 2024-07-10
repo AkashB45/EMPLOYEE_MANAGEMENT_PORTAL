@@ -10,6 +10,10 @@ import AdminLogin from './components/Login/AdminLogin';
 import ForgotPassword from './components/Login/ForgotPassword';
 import SignUp from './components/SignUp/SignUp';
 import DashBoard from './components/DashBoard/DashBoard';
+import UserRegisteration from './components/UserRegisteration/UserRegisteration';
+import JobListingPage from './components/JobListingPage/JobListingPage';
+import Job from './components/JobListingPage/Job';
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +26,7 @@ function App() {
       {!isOpen && <button
           onClick={toggleSidebar}
           className="text-gray-800 mb-5 fixed top-4 left-4 z-30"
-          style={{transform:"scale(2)"}}
+          style={{transform:"scale(2)",left:"3%",top:"4%"}}
         >
           <FaBars />
         </button>}
@@ -31,8 +35,12 @@ function App() {
       <Routes>
         <Route path="/DashBoard" element={<DashBoard/>} />
         <Route path="/Application" element={<ApplicationForm />} />
+        <Route path="/JobList" element={<JobListingPage />}>
+        <Route path="/JobList/:id" element={<Job />} />
+        </Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />
+        <Route path="/UserRegisteration" element={<UserRegisteration />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/ForgetPassword" element={<ForgotPassword />} />
       </Routes>

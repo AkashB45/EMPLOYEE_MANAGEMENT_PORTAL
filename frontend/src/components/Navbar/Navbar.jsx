@@ -4,17 +4,17 @@ import 'tailwindcss/tailwind.css';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gradient-to-r from-[#071952] to-[#14287c] shadow-lg fixed w-full z-10 px-6 py-3">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white text-2xl font-bold">
-          Job Application Dashboard
+    <nav className="bg-white shadow-md fixed w-full z-10 px-6 py-4">
+      <div className="container mx-auto flex items-center justify-around">
+        <div className="text-blue-700 text-3xl font-bold">
+          Job Dashboard
         </div>
         <div className="flex items-center space-x-6">
-          <div className="relative flex items-center rounded-full bg-white bg-opacity-80 px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-white focus-within:ring-opacity-100">
+          <div className="relative flex items-center rounded-lg bg-gray-100 px-4 py-2 shadow focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="text"
-              className="w-full pl-10 pr-3 py-1 text-black rounded-full focus:outline-none"
-              placeholder="Search"
+              className="w-full pl-8 pr-4 py-2 text-gray-800 bg-transparent rounded-lg focus:outline-none"
+              placeholder="Search jobs..."
             />
             <svg
               className="h-5 w-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
@@ -30,12 +30,17 @@ const Navbar = () => {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
+            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full px-4 py-1 hover:bg-blue-700 transition duration-300">
+              Search
+            </button>
           </div>
           <div className="relative">
             <select
-              className="form-select rounded-full bg-white bg-opacity-80 px-4 py-2 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-100 transition duration-300 ease-in-out"
+              className="form-select rounded-lg bg-gray-100 px-4 py-2 text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
             >
-              <option value="">Sort by</option>
+              <option value="" disabled selected>
+                Sort by
+              </option>
               <option value="date">Date</option>
               <option value="name">Name</option>
               <option value="position">Position</option>
@@ -43,9 +48,11 @@ const Navbar = () => {
           </div>
           <div className="relative">
             <select
-              className="form-select rounded-full bg-white bg-opacity-80 px-4 py-2 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-100 transition duration-300 ease-in-out"
+              className="form-select rounded-lg bg-gray-100 px-4 py-2 text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
             >
-              <option value="">Filter by</option>
+              <option value="" disabled selected>
+                Filter by
+              </option>
               <option value="status">Status</option>
               <option value="department">Department</option>
               <option value="location">Location</option>

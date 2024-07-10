@@ -33,10 +33,16 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                   </Link>
                 </li>
                 <li className="rounded-sm">
-                  <a href="/about" className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                  <Link to={"/UserRegisteration"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaInfo />
-                    <span>About</span>
-                  </a>
+                    <span>User Registeration</span>
+                  </Link>
+                </li>
+                <li className="rounded-sm">
+                  <Link to={"/JobList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaInfo />
+                    <span>Job List</span>
+                  </Link>
                 </li>
                 <li className="rounded-sm">
                   <Link to={"/application"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
