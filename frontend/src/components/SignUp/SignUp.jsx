@@ -160,7 +160,8 @@ const SignUp = () => {
                             <label htmlFor="agreedToTerms" className="flex items-center">
                                 <input id="agreedToTerms" name="agreedToTerms" type="checkbox" required onChange={handleChange} className="mr-2 leading-tight" />
                                 <span className="text-sm text-black">
-                                    I agree to the <a href="https://aishwaryaramportfolio.netlify.app/" className="text-indigo-600 underline">Terms of Service</a>
+                                    I agree to the 
+                                    <Link to={"/Terms&Conditions"} className="text-indigo-600 underline">Terms of Service</Link>
                                 </span>
                             </label>
                         </div>

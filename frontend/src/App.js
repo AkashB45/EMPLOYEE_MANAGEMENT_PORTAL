@@ -14,6 +14,10 @@ import JobListingPage from './components/JobListingPage/JobListingPage';
 import Job from './components/JobListingPage/Job';
 import EditJob from './components/JobListingPage/EditJob';
 import Home from './components/HomePage/Home';
+import ContactPage from './components/ContactPage/ContactPage';
+import NotFound from './components/NotFoundPage/NotFoundPage';
+import NewJobForm from './components/NewJobForm/NewJobForm';
+import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +38,7 @@ function App() {
       
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <Routes>
-        <Route path="/Home" element={<Home/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/Application" element={<ApplicationForm />} />
         <Route path="/JobList">
         <Route index element={<JobListingPage />} />
@@ -46,6 +50,10 @@ function App() {
         <Route path="/UserRegisteration" element={<UserRegisteration />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/ForgetPassword" element={<ForgotPassword />} />
+        <Route path="/Terms&Conditions" element={<TermsAndConditions/>} />
+        <Route path="/ContactPage" element={<ContactPage/>} />
+        <Route path="/*" element={<NotFound/>} />
+        <Route path="/NewJobForm" element={<NewJobForm/>} />
       </Routes>
     </div>
   );
