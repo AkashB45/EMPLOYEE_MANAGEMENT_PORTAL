@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
-const UserRegisteration = () => {
+const UserRegistration = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    contactNumber: '',
     jobDesignation: '',
+    location: '',
   });
 
   const handleChange = (e) => {
@@ -64,19 +64,6 @@ const UserRegisteration = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="formContactNumber" className="mb-4">
-            <Form.Label className="text-left">Contact Number</Form.Label>
-            <Form.Control
-              type="text"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              placeholder="Enter your contact number"
-              className="border-2 border-gray-300 p-2 rounded-lg w-full"
-              required
-            />
-          </Form.Group>
-
           <Form.Group controlId="formJobDesignation" className="mb-4">
             <Form.Label className="text-left">Job Designation</Form.Label>
             <Form.Control
@@ -85,6 +72,19 @@ const UserRegisteration = () => {
               value={formData.jobDesignation}
               onChange={handleChange}
               placeholder="Enter your job designation"
+              className="border-2 border-gray-300 p-2 rounded-lg w-full"
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formLocation" className="mb-4">
+            <Form.Label className="text-left">Location</Form.Label>
+            <Form.Control
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter your location"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
               required
             />
@@ -103,4 +103,4 @@ const UserRegisteration = () => {
   );
 };
 
-export default UserRegisteration;
+export default UserRegistration;

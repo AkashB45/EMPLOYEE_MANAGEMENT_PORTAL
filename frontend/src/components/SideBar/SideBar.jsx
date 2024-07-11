@@ -45,6 +45,12 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                   </Link>
                 </li>
                 <li className="rounded-sm">
+                  <Link to={"/UserList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaInfo />
+                    <span>User List</span>
+                  </Link>
+                </li>
+                <li className="rounded-sm">
                   <Link to={"/application"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaServicestack />
                     <span>Application Form</span>
@@ -53,7 +59,7 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                 <li className="rounded-sm">
                   <Link to={"/AdminLogin"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaEnvelope />
-                    <span>SignIn</span>
+                    <span>LogOut</span>
                   </Link>
                 </li>
               </ul>

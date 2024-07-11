@@ -18,7 +18,9 @@ import ContactPage from './components/ContactPage/ContactPage';
 import NotFound from './components/NotFoundPage/NotFoundPage';
 import NewJobForm from './components/NewJobForm/NewJobForm';
 import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
-
+import UserListingPage from './components/UserListingPage/UserListingPage';
+import User from './components/UserListingPage/User';
+import EditUser from './components/UserListingPage/EditUser';
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,6 +46,11 @@ function App() {
         <Route index element={<JobListingPage />} />
         <Route path=":id" element={<Job />} />
         <Route path="edit/:id" element={<EditJob />} />
+        </Route>
+        <Route path="/UserList">
+        <Route index element={<UserListingPage />} />
+        <Route path=":id" element={<User />} />
+        <Route path="edit/:id" element={<EditUser />} />
         </Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />

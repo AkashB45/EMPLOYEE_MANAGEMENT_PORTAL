@@ -9,18 +9,19 @@ const Job = () => {
   const { posts,setPosts} = useContext(ThemeContext);
   const post = posts.find((post) => post.id.toString() === id);
   const navigate = useNavigate(); 
-
+  
   const handleEdit = () => {
     // Implement edit functionality here
     console.log("Edit clicked for", post.id);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete =async  () => {
     // Implement delete functionality here
-    const updatedPosts = posts.map((p) => (p.id.toString() !== id ? p:null));
-    setPosts(updatedPosts);
-    navigate(`/JobList`);
-    console.log("Delete clicked for", post.id);
+    const updatedPosts = posts.filter((post)=>(post.id.toString()!==id));
+    await setPosts(updatedPosts);
+    // navigate(`/JobList`);
+     console.log(id);
+   console.log("Delete clicked for", post.id);
   };
 
   const backgroundImageStyle = {
@@ -55,13 +56,15 @@ const Job = () => {
             Edit
           </Button>
           </Link>
+          <Link to={"/JobList"}>
           <Button 
-            onClick={()=>handleDelete(post.id)} 
+            onClick={()=>handleDelete()} 
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg"
             style={{background:'#d9534f'}}
           >
             Delete
           </Button>
+          </Link>
         </div>
       </Container>
     </div>

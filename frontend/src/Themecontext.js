@@ -83,9 +83,21 @@ export const ThemeProvider = ({ children }) => {
         
       },
     }
+    const [users, setUsers] = useState([
+      { id: 1, name: 'John Doe', position: 'Developer', email: 'john.doe@example.com', joinDate: '2023-01-15', department: 'Engineering', status: 'Active', location: 'New York' },
+      { id: 2, name: 'Jane Smith', position: 'Designer', email: 'jane.smith@example.com', joinDate: '2022-05-23', department: 'Design', status: 'Active', location: 'San Francisco' },
+      { id: 3, name: 'Alex Johnson', position: 'Manager', email: 'alex.johnson@example.com', joinDate: '2021-08-30', department: 'Management', status: 'On Leave', location: 'Chicago' },
+      { id: 4, name: 'Emily Davis', position: 'QA Engineer', email: 'emily.davis@example.com', joinDate: '2022-12-12', department: 'Quality Assurance', status: 'Active', location: 'Boston' },
+      { id: 5, name: 'Michael Brown', position: 'DevOps Engineer', email: 'michael.brown@example.com', joinDate: '2023-03-19', department: 'Engineering', status: 'Active', location: 'Seattle' },
+      { id: 6, name: 'Sarah Wilson', position: 'Product Owner', email: 'sarah.wilson@example.com', joinDate: '2020-11-10', department: 'Product', status: 'Active', location: 'Los Angeles' },
+      { id: 7, name: 'David Lee', position: 'UI/UX Designer', email: 'david.lee@example.com', joinDate: '2021-02-22', department: 'Design', status: 'Inactive', location: 'Austin' },
+      { id: 8, name: 'Laura Martinez', position: 'Scrum Master', email: 'laura.martinez@example.com', joinDate: '2019-07-15', department: 'Management', status: 'Active', location: 'Denver' },
+      { id: 9, name: 'James White', position: 'Backend Developer', email: 'james.white@example.com', joinDate: '2022-11-03', department: 'Engineering', status: 'Active', location: 'Portland' },
+      { id: 10, name: 'Jessica Green', position: 'Frontend Developer', email: 'jessica.green@example.com', joinDate: '2021-04-17', department: 'Engineering', status: 'Active', location: 'San Diego' },
+    ]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles }}>
+    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers }}>
       {children}
     </ThemeContext.Provider>
   );
