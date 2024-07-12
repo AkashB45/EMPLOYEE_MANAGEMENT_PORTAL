@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import { ThemeContext } from '../../Themecontext';
+import { format } from 'date-fns';
 
 const UserRegistration = () => {
+  const { users, setUsers } = useContext(ThemeContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
-    jobDesignation: '',
+    position: '',
     location: '',
+    status: 'Active',
+    joinDate: format(new Date(), 'yyyy-MM-dd'),
+    department: 'Management',
   });
 
   const handleChange = (e) => {
@@ -19,8 +27,10 @@ const UserRegistration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    // Handle form submission logic here
+    const newUser = { ...formData, id: users.length + 1 }; // Assuming id is incremented by length
+    setUsers([...users, newUser]);
+    console.log('New User Added:', newUser);
+    navigate('/userList');
   };
 
   const backgroundImageStyle = {
@@ -42,8 +52,8 @@ const UserRegistration = () => {
             <Form.Label className="text-left">Username</Form.Label>
             <Form.Control
               type="text"
-              name="username"
-              value={formData.username}
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               placeholder="Enter your username"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
@@ -64,14 +74,14 @@ const UserRegistration = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="formJobDesignation" className="mb-4">
-            <Form.Label className="text-left">Job Designation</Form.Label>
+          <Form.Group controlId="formPosition" className="mb-4">
+            <Form.Label className="text-left">Position</Form.Label>
             <Form.Control
               type="text"
-              name="jobDesignation"
-              value={formData.jobDesignation}
+              name="position"
+              value={formData.position}
               onChange={handleChange}
-              placeholder="Enter your job designation"
+              placeholder="Enter your position"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
               required
             />
@@ -97,6 +107,7 @@ const UserRegistration = () => {
           >
             Register
           </Button>
+        
         </Form>
       </Container>
     </div>

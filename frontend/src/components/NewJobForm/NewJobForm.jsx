@@ -13,13 +13,13 @@ const NewJobForm = () => {
     company: '',
     location: '',
     type: '',
-    created_at: '',
+    postedDate: '',
     salary: '',
     description: '',
-    skills: '',
+    skills: [],
   };
 
-  const [formData, setFormData] = useState({ ...initialFormData });
+  const [formData, setFormData] = useState({...initialFormData});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +31,8 @@ const NewJobForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPost = { ...formData, id: posts.length + 1 }; // Generate a new id (replace with your own logic)
+    const skillsArray = formData.skills.split(',').map(skill => skill.trim()); // Split and trim the skills string
+    const newPost = { ...formData, id: posts.length + 1, skills: skillsArray }; // Add skills array to new post
     const updatedPosts = [...posts, newPost];
     setPosts(updatedPosts);
     navigate('/JobList');
@@ -107,11 +108,11 @@ const NewJobForm = () => {
           </Form.Group>
 
           <Form.Group controlId="formCreatedAt" className="mb-4">
-            <Form.Label>Created At</Form.Label>
+            <Form.Label>Posted On</Form.Label>
             <Form.Control
               type="date"
-              name="created_at"
-              value={formData.created_at}
+              name="postedDate"
+              value={formData.postedDate}
               onChange={handleChange}
               placeholder="Enter created at date"
               className="border-2 border-gray-300 p-2 rounded-lg"
@@ -152,7 +153,7 @@ const NewJobForm = () => {
               name="skills"
               value={formData.skills}
               onChange={handleChange}
-              placeholder="Enter skills required"
+              placeholder="Enter skills required, separated by commas"
               className="border-2 border-gray-300 p-2 rounded-lg"
               required
             />

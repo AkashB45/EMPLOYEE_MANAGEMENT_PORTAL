@@ -21,6 +21,9 @@ import TermsAndConditions from './components/TermsAndConditions/TermsAndConditio
 import UserListingPage from './components/UserListingPage/UserListingPage';
 import User from './components/UserListingPage/User';
 import EditUser from './components/UserListingPage/EditUser';
+import ApplicantDetails from './components/ApplicantDetails/ApplicantDetails';
+import InterviewProgress from './components/InterviewProgress/InterviewProgress';
+import LandingPage from './components/LandingPage/LandingPage';
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +43,8 @@ function App() {
       
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<LandingPage/>} />
+        <Route path="/Home" element={<Home/>} />
         <Route path="/Application" element={<ApplicationForm />} />
         <Route path="/JobList">
         <Route index element={<JobListingPage />} />
@@ -59,8 +63,10 @@ function App() {
         <Route path="/ForgetPassword" element={<ForgotPassword />} />
         <Route path="/Terms&Conditions" element={<TermsAndConditions/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
-        <Route path="/*" element={<NotFound/>} />
         <Route path="/NewJobForm" element={<NewJobForm/>} />
+        <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
+        <Route path="/InterviewProgress" element={<InterviewProgress/>} />
+        <Route path="/*" element={<NotFound/>} />
       </Routes>
     </div>
   );

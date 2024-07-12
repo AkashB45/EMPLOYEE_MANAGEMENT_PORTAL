@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../Themecontext';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import {format} from 'date-fns' 
+
 const Job = () => {
   const { id } = useParams();
   const { posts,setPosts} = useContext(ThemeContext);
@@ -38,13 +40,13 @@ const Job = () => {
     <div style={backgroundImageStyle}>
       <Container className="my-0 p-5 bg-white shadow-lg rounded-lg max-w-lg mx-auto">
         <h2 className="text-center mb-4 text-2xl font-semibold">{post.title}</h2>
-        <p className="text-gray-600 mb-2"><strong>Company:</strong> {post.company}</p>
-        <p className="text-gray-600 mb-2"><strong>Location:</strong> {post.location}</p>
-        <p className="text-gray-600 mb-2"><strong>Type:</strong> {post.type}</p>
-        <p className="text-gray-500 text-sm mb-2"><strong>Posted on:</strong> {new Date(post.created_at).toLocaleDateString()}</p>
+        <p className="text-gray-700 mb-2"><strong>Company:</strong> {post.company}</p>
+        <p className="text-gray-700 mb-2"><strong>Location:</strong> {post.location}</p>
+        <p className="text-gray-700 mb-2"><strong>Type:</strong> {post.type}</p>
+        <p className="text-gray-700 text-sm mb-2"><strong>Posted on:</strong>{format(new Date(post.postedDate),' yyyy-MM-dd')}</p>
         <p className="text-gray-700 font-semibold mb-2"><strong>Salary:</strong> {post.salary}</p>
         <p className="text-gray-700 mb-2"><strong>Description:</strong> {post.description}</p>
-        <p className="text-gray-700 mb-4"><strong>Skills:</strong> {post.skills}</p>
+        <p className="text-gray-700 mb-4"><strong>Skills:</strong> {post.skills.join(', ')}</p>
 
         <div className="flex justify-between space-x-4">
           <Link to={`/JobList/edit/${post.id}`}>

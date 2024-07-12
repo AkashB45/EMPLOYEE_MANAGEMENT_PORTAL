@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import {useParams, Navigate, Route, Router, Routes, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../Themecontext';
 import { Form, Button, Container } from 'react-bootstrap';
+
 const EditJob = () => {
   const { id } = useParams();
   const { posts, setPosts } = useContext(ThemeContext);
@@ -19,10 +20,11 @@ const EditJob = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedPosts = posts.map((p) => (p.id.toString() === id ? formData : p));
+    const skillsArray = formData.skills.split(',').map(skill => skill.trim()); // Split and trim the skills string
+    const updatedPost = { ...formData, skills: skillsArray }; // Add skills array to updated post
+    const updatedPosts = posts.map((p) => (p.id.toString() === id ? updatedPost : p));
     setPosts(updatedPosts);
     navigate(`/JobList`);
-    
   };
 
   const backgroundImageStyle = {
@@ -96,8 +98,8 @@ const EditJob = () => {
             <Form.Label className="text-left">Created At</Form.Label>
             <Form.Control
               type="date"
-              name="created_at"
-              value={formData.created_at}
+              name="postedDate"
+              value={formData.postedDate}
               onChange={handleChange}
               placeholder="Enter created at date"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
@@ -138,7 +140,7 @@ const EditJob = () => {
               name="skills"
               value={formData.skills}
               onChange={handleChange}
-              placeholder="Enter skills required"
+              placeholder="Enter skills required, separated by commas"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
               required
             />

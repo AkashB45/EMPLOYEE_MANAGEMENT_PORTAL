@@ -4,7 +4,8 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
-  const [posts,setPosts] = useState([
+  const[search,setSearch]  = useState('');
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: 'Frontend Developer',
@@ -14,7 +15,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$70,000 - $90,000',
       description: 'We are looking for a skilled Frontend Developer to join our team. You will be responsible for developing and maintaining web applications using React.js and other modern web technologies.',
       postedDate: '2024-06-01',
-      companyLogo: 'https://example.com/logos/tech-innovators.png',
+      skills: ['React.js', 'JavaScript', 'HTML', 'CSS'],
     },
     {
       id: 2,
@@ -25,7 +26,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$80,000 - $100,000',
       description: 'Join our team as a Backend Developer, working with Node.js and Express.js to build scalable and efficient server-side applications.',
       postedDate: '2024-06-05',
-      companyLogo: 'https://example.com/logos/data-solutions.png',
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'SQL'],
     },
     {
       id: 3,
@@ -36,7 +37,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$40,000 - $60,000',
       description: 'We are seeking a talented UI/UX Designer to create engaging and user-friendly interfaces for our web and mobile applications.',
       postedDate: '2024-06-10',
-      companyLogo: 'https://example.com/logos/creative-minds.png',
+      skills: ['Sketch', 'Figma', 'Adobe XD', 'User Research'],
     },
     {
       id: 4,
@@ -47,7 +48,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$50,000 - $70,000',
       description: 'As a Project Manager, you will be responsible for overseeing project timelines, coordinating with teams, and ensuring successful project delivery.',
       postedDate: '2024-06-12',
-      companyLogo: 'https://example.com/logos/business-corp.png',
+      skills: ['Project Management', 'Agile', 'Scrum', 'Leadership'],
     },
     {
       id: 5,
@@ -58,7 +59,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$90,000 - $120,000',
       description: 'We are looking for a Data Scientist to analyze complex data sets, develop predictive models, and provide actionable insights to our clients.',
       postedDate: '2024-06-15',
-      companyLogo: 'https://example.com/logos/analytics-pro.png',
+      skills: ['Python', 'R', 'Machine Learning', 'Data Analysis'],
     },
     {
       id: 6,
@@ -69,7 +70,7 @@ export const ThemeProvider = ({ children }) => {
       salary: '$50,000 - $70,000',
       description: 'Join our marketing team as a Marketing Specialist, creating and implementing marketing strategies to enhance brand awareness and drive sales.',
       postedDate: '2024-06-20',
-      companyLogo: 'https://example.com/logos/brand-masters.png',
+      skills: ['SEO', 'Content Marketing', 'Social Media', 'Analytics'],
     },
   ]);
     const styles = {
@@ -95,9 +96,39 @@ export const ThemeProvider = ({ children }) => {
       { id: 9, name: 'James White', position: 'Backend Developer', email: 'james.white@example.com', joinDate: '2022-11-03', department: 'Engineering', status: 'Active', location: 'Portland' },
       { id: 10, name: 'Jessica Green', position: 'Frontend Developer', email: 'jessica.green@example.com', joinDate: '2021-04-17', department: 'Engineering', status: 'Active', location: 'San Diego' },
     ]);
+    const [applicants,setApplicants]=useState(
+      [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "email": "johndoe@example.com",
+          "contactNo": "+1-123-456-7890",
+          "position": "Software Engineer",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "status": "New"
+        },
+        {
+          "id": 2,
+          "name": "Jane Smith",
+          "email": "janesmith@example.com",
+          "contactNo": "+1-234-567-8901",
+          "position": "UX/UI Designer",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "status": "New"
+        },
+        {
+          "id": 3,
+          "name": "Michael Johnson",
+          "email": "michaeljohnson@example.com",
+          "contactNo": "+1-345-678-9012",
+          "position": "Data Analyst",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "status": "New"
+        }
+      ])
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers }}>
+    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers,applicants,setApplicants,search,setSearch }}>
       {children}
     </ThemeContext.Provider>
   );
