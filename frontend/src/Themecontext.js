@@ -5,6 +5,7 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   const[search,setSearch]  = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -128,7 +129,7 @@ export const ThemeProvider = ({ children }) => {
       ])
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers,applicants,setApplicants,search,setSearch }}>
+    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers,applicants,setApplicants,search,setSearch,isOpen,setIsOpen}}>
       {children}
     </ThemeContext.Provider>
   );

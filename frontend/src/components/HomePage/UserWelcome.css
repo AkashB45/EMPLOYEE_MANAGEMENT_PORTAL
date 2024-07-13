@@ -1,0 +1,124 @@
+/* Common styles for welcome text and image transition */
+.welcome-text {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  
+  }
+  
+  .image-transition {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .image-transition:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Entrance animations */
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+  }
+  
+  /* Custom title animations */
+  .text-primary {
+    color: #f67162; /* Tomato */
+    animation: zoomInFadeOut 1s ease-in-out;
+  }
+  
+  /* Section title */
+  .section-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff; /* Green */
+    background-color: #071952; /* Tomato */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button styles */
+  .btn-outline-primary {
+    color: #ff6347; /* Tomato */
+    border-color: #ff6347; /* Tomato */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #ff6347; /* Tomato */
+    color: #fff; /* White */
+    transform: scale(1.05);
+  }
+  
+  /* Keyframe animations */
+  @keyframes zoomInFadeOut {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  
+  
+  /* Card hover effect */
+  .step-card,
+  .feature-card {
+    min-height: 200px;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .step-card:hover,
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  /* Image animation */
+  .img-small {
+    width: 350px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 20%; /* Adjust margin as needed */
+    transition: transform 0.5s ease-in-out; /* Initial transition */
+    transform: translateX(-50px); /* Initial position outside viewport */
+  }
+  
+  .img-small.animate {
+    transform: translateX(0); /* Move image to original position */
+  }
+  
+  /* AdminWelcome.css */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .pulse {
+    animation: pulse 1.5s infinite;
+  }
+  

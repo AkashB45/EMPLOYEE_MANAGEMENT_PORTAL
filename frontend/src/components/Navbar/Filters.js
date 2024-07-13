@@ -7,7 +7,6 @@ export const filterPosts = (posts, searchQuery) => {
       post.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.skills.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.type.toLowerCase().includes(searchQuery.toLowerCase())
     );
   };

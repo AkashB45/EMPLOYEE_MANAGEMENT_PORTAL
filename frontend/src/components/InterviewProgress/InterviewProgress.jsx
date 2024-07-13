@@ -47,7 +47,7 @@ const InterviewProgress = () => {
       <div className="container mx-auto p-5 mt-5 mx-10" style={{ position: "absolute", top: "6rem" }}>
         <h2 className="text-2xl font-semibold mb-6 text-gray-800">Interview Progress</h2>
         {filteredApplicants
-                  .filter((applicant) => (applicant.status !== 'New')).length === 0 ? (
+                  .filter((applicant) => (applicant.status !== 'New' && applicant.status !=='Rejected')).length === 0 ? (
           <p className="text-center text-gray-700">No Applicants found</p>
         ) : (
           <div className="overflow-x-auto">
@@ -67,7 +67,7 @@ const InterviewProgress = () => {
               </thead>
               <tbody className="text-gray-700">
                 {filteredApplicants
-                  .filter((applicant) => applicant.status !== 'New')
+                  .filter((applicant) => (applicant.status !== 'New' && applicant.status !== 'Rejected'))
                   .map((applicant) => (
                     <tr key={applicant.id} className="bg-gray-100">
                       <td className="text-left py-3 px-4">{applicant.id}</td>
@@ -77,7 +77,7 @@ const InterviewProgress = () => {
                           {applicant.email}
                         </a>
                       </td>
-                      <td className="text-left py-3 px-4">{applicant.contactno}</td>
+                      <td className="text-left py-3 px-4">{applicant.contactNo}</td>
                       <td className="text-left py-3 px-4">{applicant.position}</td>
                       <td className="text-left py-3 px-4">
                         <button

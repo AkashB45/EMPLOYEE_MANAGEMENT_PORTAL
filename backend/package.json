@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,13 @@
     "nodemon": "^3.1.4"
   },
   "dependencies": {
+    "codemon": "^0.1.31-development",
+    "cors": "^2.8.5",
+    "date-fns": "^3.6.0",
     "express": "^4.19.2",
-    "mongoose": "^8.4.5"
+    "mongodb-memory-server": "^9.4.0",
+    "mongoose": "^8.5.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1"
   }
 }

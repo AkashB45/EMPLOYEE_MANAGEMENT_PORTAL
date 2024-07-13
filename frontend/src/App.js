@@ -1,4 +1,4 @@
-import { Routes } from 'react-router-dom';
+import { Routes,useLocation } from 'react-router-dom';
 import './App.css';
 import ApplicationForm from './components/ApplicationForm/ApplicationForm';
 import Sidebar from './components/SideBar/SideBar';
@@ -24,19 +24,28 @@ import EditUser from './components/UserListingPage/EditUser';
 import ApplicantDetails from './components/ApplicantDetails/ApplicantDetails';
 import InterviewProgress from './components/InterviewProgress/InterviewProgress';
 import LandingPage from './components/LandingPage/LandingPage';
+import CreateNewPassword from './components/Login/CreateNewPassword';
+import AdminWelcome from './components/HomePage/AdminWelcome';
+import AdminDashBoard from './components/HomePage/AdminDashBoard';
+import UserWelcome from './components/HomePage/UserWelcome'
+import { ThemeContext } from './Themecontext';
+import {useContext} from 'react'
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const{isOpen,setIsOpen} = useContext(ThemeContext);
+  const location = useLocation();
+  const endpoint = location.pathname;
+  console.log(endpoint);
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div className="App">
-      {!isOpen && <button
+      {(endpoint!=='/') && !isOpen && <button
           onClick={toggleSidebar}
           className="text-gray-800 mb-5 fixed top-4 left-4 z-30"
           style={{transform:"scale(2)",left:"3%",top:"4%"}}
+          
         >
           <FaBars />
         </button>}
@@ -61,11 +70,15 @@ function App() {
         <Route path="/UserRegisteration" element={<UserRegisteration />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/ForgetPassword" element={<ForgotPassword />} />
+        <Route path="/CreateNewPassword" element={<CreateNewPassword />} />
         <Route path="/Terms&Conditions" element={<TermsAndConditions/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
         <Route path="/NewJobForm" element={<NewJobForm/>} />
         <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
         <Route path="/InterviewProgress" element={<InterviewProgress/>} />
+        <Route path="/AdminWelcome" element={<AdminWelcome/>} />
+        <Route path="/UserWelcome" element={<UserWelcome/>} />
+        <Route path="/AdminDashBoard" element={<AdminDashBoard/>} />
         <Route path="/*" element={<NotFound/>} />
       </Routes>
     </div>
