@@ -4,6 +4,8 @@ import { Container, Row, Col, Card, Button, Navbar, Nav } from 'react-bootstrap'
 import './UserWelcome.css'; 
 import { CSSTransition } from 'react-transition-group';
 import { FaAngleDown } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 const AdminWelcome = () => {
   const imgRefs = useRef([]);
   const featureCardRefs = useRef([]);
@@ -44,14 +46,16 @@ const AdminWelcome = () => {
     });
   };
 
-  const StepCard = ({ number, title, description, buttonText, buttonVariant, inView }) => (
+  const StepCard = ({ number, title, description, buttonText, buttonVariant, inView,linkto}) => (
     <Col md={6} className={`mb-5 ${inView ? 'pulse' : ''}`} ref={ref => stepCardRefs.current.push(ref)}>
       <Card className="step-card p-4 bg-white rounded-lg shadow-lg">
         <h3 className="text-info mb-3">{number}: {title}</h3>
         <p className="text-muted">{description}</p>
+        <Link to={`${linkto}`}>
         <div className="text-center mt-4">
           <Button variant={buttonVariant} className="py-2 px-4 rounded-lg shadow-lg">{buttonText}</Button>
         </div>
+        </Link>
       </Card>
     </Col>
   );
@@ -110,6 +114,7 @@ const AdminWelcome = () => {
               description="Effortlessly set up your profile with our intuitive process, ensuring security and tailored customization."
               buttonText="Set Profile"
               buttonVariant="outline-primary"
+              linkto="/Profile"
               inView={stepInView[0]}
             />
             <StepCard
@@ -118,6 +123,7 @@ const AdminWelcome = () => {
               description="We've designed a streamlined system for effortlessly logging all applicant data in one place using a user-friendly form."
               buttonText="Upload Info"
               buttonVariant="outline-primary"
+              linkto="/Application"
               inView={stepInView[1]}
             />
           </Row>
@@ -128,6 +134,7 @@ const AdminWelcome = () => {
               description="Assess applicants to gauge their qualifications and suitability for the position. Use structured evaluations to make informed hiring decisions."
               buttonText="Analyse"
               buttonVariant="outline-primary"
+              linkto="/ApplicantDetails"
               inView={stepInView[2]}
             />
             <StepCard
@@ -136,6 +143,7 @@ const AdminWelcome = () => {
               description="Track applicant interview statuses to monitor their progress through the hiring process and make informed decisions based on detailed feedback."
               buttonText="Monitor"
               buttonVariant="outline-primary"
+              linkto="/InterviewProgress"
               inView={stepInView[3]}
             />
           </Row>
