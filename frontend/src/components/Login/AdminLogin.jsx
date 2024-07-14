@@ -19,6 +19,7 @@ const AdminLogin = () => {
   };
 
   const backgroundImageStyle = {
+    
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     minHeight: '100vh',

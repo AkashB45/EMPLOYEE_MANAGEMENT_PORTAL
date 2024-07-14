@@ -49,7 +49,9 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen  flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]" style={{
+        <div className="min-h-screen  flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]"
+         style={{
+            
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
