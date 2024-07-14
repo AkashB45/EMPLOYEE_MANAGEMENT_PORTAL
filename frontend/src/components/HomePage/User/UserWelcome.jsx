@@ -1,15 +1,13 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './AdminWelcome.css'; 
+import { Container, Row, Col, Card, Button, Navbar, Nav } from 'react-bootstrap';
+import './UserWelcome.css'; 
 import { CSSTransition } from 'react-transition-group';
-import { ThemeContext } from '../../Themecontext';
-
+import { FaAngleDown } from 'react-icons/fa';
 const AdminWelcome = () => {
   const imgRefs = useRef([]);
   const featureCardRefs = useRef([]);
   const stepCardRefs = useRef([]);
-  const {isOpen,setIsOpen} = useContext(ThemeContext)
   const [stepInView, setStepInView] = useState([false, false, false, false]);
 
   useEffect(() => {
@@ -18,6 +16,7 @@ const AdminWelcome = () => {
       rootMargin: '0px',
       threshold: 0.5,
     };
+
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
     imgRefs.current.forEach(ref => observer.observe(ref));
@@ -58,15 +57,34 @@ const AdminWelcome = () => {
   );
 
   return (
-    <Container className="mt-5">
+    <>
+     <Navbar expand="lg" sticky="top" className="shadow-sm"
+      style={{ zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)', color: '#071952', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+      <Container>
+        <Navbar.Brand href="#home" style={{ color: '#071952', marginLeft: '5rem' }}>OnBoardMaster</Navbar.Brand>
+        {/* Customize the toggle button */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <FaAngleDown style={{ color: '#071952' }} />
+        </Navbar.Toggle>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto d-flex justify-content-end align-items-center w-100"
+            style={{ color: '#071952', marginRight: '4rem' }}>
+            <Nav.Link href="#welcome" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Welcome</Nav.Link>
+            <Nav.Link href="#ready-to-start" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Start</Nav.Link>
+            <Nav.Link href="#major-functionality" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Functionality</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <Container className="mt-2">
       <Card className="p-4 shadow-lg rounded-lg">
-        <Row>
+        <Row id="welcome">
           {/* Welcome Section */}
           <Col md={6} className="d-flex align-items-center">
             <CSSTransition in appear timeout={500} classNames="fade">
               <div className="welcome-text text-center">
-                <h1 className="text-primary mb-3">Welcome to OnBoardMaster, Admin!</h1>
-                <p className="">Let's Get Started with Your Admin Dashboard</p>
+                <h1 className="text-primary mb-3">Welcome to OnBoardMaster, Akash!</h1>
+                <p className="">Let's Get Started with Your Dashboard</p>
               </div>
             </CSSTransition>
           </Col>
@@ -83,7 +101,7 @@ const AdminWelcome = () => {
           </Col>
         </Row>
 
-        <div className="mt-5 mb-5">
+        <div className="mt-5 mb-5" id="ready-to-start">
           <h2 className="section-title text-center mb-4">Ready to Start?</h2>
           <Row className="mb-5">
             <StepCard
@@ -96,9 +114,9 @@ const AdminWelcome = () => {
             />
             <StepCard
               number="Step 2"
-              title="User Management"
-              description="Simplify user creation, modification, and removal with defined roles and permissions."
-              buttonText="Create Users"
+              title="Upload Candidate Data"
+              description="We've designed a streamlined system for effortlessly logging all applicant data in one place using a user-friendly form."
+              buttonText="Upload Info"
               buttonVariant="outline-primary"
               inView={stepInView[1]}
             />
@@ -124,7 +142,7 @@ const AdminWelcome = () => {
         </div>
 
         {/* Major Functionality Section */}
-        <div className="mt-5">
+        <div className="mt-5" id="major-functionality">
           <h2 className="section-title text-center mb-4">Major Functionality</h2>
           <Row className="mb-8 md:flex md:mb-3 align-items-center">
             <Col md={6} order={1}>
@@ -133,18 +151,18 @@ const AdminWelcome = () => {
                 className="feature-card p-4 bg-white rounded-lg shadow-lg animate__animated animate__fadeInLeft transition duration-500 hover:bg-gray-100 hover:shadow-md"
               >
                 <h4 className="text-secondary mb-3 font-bold transition duration-300 hover:text-blue-600">
-                  Easy Administration
+                Efficient recruitment
                 </h4>
                 <p className="text-muted">
-                Effortlessly create new user accounts tailored to specific roles and permissions. Automate the generation of unique passwords and send email notifications seamlessly. Simplify administrative tasks with our intuitive user creation feature, ensuring efficient management of access and security. Streamline your workflow and enhance user onboarding with automated processes that save time and ensure accuracy
+               We significantly simplifies the entire onboarding process by consolidating resume shortlisting and interview tracking into one seamless platform. With real-time updates and streamlined workflows, HR managers can efficiently manage candidate evaluations. Administrators can then swiftly generate offer letters directly through the platform, ensuring a seamless transition from candidate selection to final hiring decisions.
                 </p>
               </div>
             </Col>
             <Col md={6} order={2} className="md:order-2">
               <img
                 ref={ref => imgRefs.current.push(ref)}
-                src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?t=st=1720767942~exp=1720771542~hmac=2a6bdaa5ea67c0a817f21d73fcf1b3a2022afa9a93caf6f420df1e07b8995495&w=740"
-                alt="User Creation"
+                src="https://img.freepik.com/free-vector/choice-worker-concept_23-2148626348.jpg?t=st=1720840792~exp=1720844392~hmac=c76144639286476086ff2c3124d3ebed98834bfb321c5e44e9dedf15f0a997fc&w=740"
+                alt="Simplified onboarding"
                 className="img-fluid rounded-lg shadow-lg img-small animate__animated animate__zoomIn"
               />
             </Col>
@@ -249,6 +267,7 @@ const AdminWelcome = () => {
 
       </Card>
     </Container>
+    </>
   );
 };
 

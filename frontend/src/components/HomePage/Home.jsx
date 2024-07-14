@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminWelcome from './AdminWelcome'
+import AdminWelcome from './Admin/AdminWelcome'
 const Home = () => {
  
   return (

@@ -5,11 +5,11 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     position: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     joinDate: { type: Date, required: true, default: () => new Date() },
     department: { type: String, required: true },
     status: { type: String, required: true ,default:"Active"},
     location: { type: String, required: true },
-    password: { type: String, required: true }
 });
 
 const User = mongoose.model("User", userSchema);

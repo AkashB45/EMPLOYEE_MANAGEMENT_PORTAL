@@ -1,6 +1,6 @@
 const mongoose = require('../database/mongodb'); // Ensure you have the correct path to your MongoDB connection file
 
-const postSchema = new mongoose.Schema({
+const jobSchema = new mongoose.Schema({
     id: { type: Number, required: true },
     title: { type: String, required: true },
     company: { type: String, required: true },
@@ -12,6 +12,6 @@ const postSchema = new mongoose.Schema({
     skills: { type: [String], required: true }
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Jobs = mongoose.model('Jobs', jobSchema);
 
-module.exports = Post;
+module.exports = Jobs;

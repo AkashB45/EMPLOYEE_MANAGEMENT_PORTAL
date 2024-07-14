@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
+
 const SignUp = () => {
     const [formData, setFormData] = useState({
         companyName: '',
@@ -26,7 +27,7 @@ const SignUp = () => {
         securityAnswer: '',
         agreedToTerms: false
     });
-
+    const backgroundImage = "https://img.freepik.com/free-vector/vector-grunge-color-texture_2065-554.jpg?t=st=1720893626~exp=1720897226~hmac=122921af79b70e451af9b31c34ac0a9f1f8f99a0d03c510c59a58964116489b9&w=740";
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
 
@@ -48,7 +49,11 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen  flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]">
+        <div className="min-h-screen  flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]" style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }}>
             <div className="absolute inset-0 opacity-60"></div>
             <div className="max-w-4xl w-full bg-white bg-opacity-90 rounded-lg shadow-xl p-8 relative z-10">
                 <h2 className="text-3xl font-bold text-center text-black mb-6">Register Your Company</h2>

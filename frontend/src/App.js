@@ -25,9 +25,9 @@ import ApplicantDetails from './components/ApplicantDetails/ApplicantDetails';
 import InterviewProgress from './components/InterviewProgress/InterviewProgress';
 import LandingPage from './components/LandingPage/LandingPage';
 import CreateNewPassword from './components/Login/CreateNewPassword';
-import AdminWelcome from './components/HomePage/AdminWelcome';
-import AdminDashBoard from './components/HomePage/AdminDashBoard';
-import UserWelcome from './components/HomePage/UserWelcome'
+import AdminWelcome from './components/HomePage/Admin/AdminWelcome';
+import AdminDashBoard from './components/HomePage/Admin/AdminDashBoard';
+import UserWelcome from './components/HomePage/User/UserWelcome'
 import { ThemeContext } from './Themecontext';
 import {useContext} from 'react'
 function App() {
@@ -44,7 +44,7 @@ function App() {
       {(endpoint!=='/') && !isOpen && <button
           onClick={toggleSidebar}
           className="text-gray-800 mb-5 fixed top-4 left-4 z-30"
-          style={{transform:"scale(2)",left:"3%",top:"4%"}}
+          style={{transform:"scale(2)",left:"3%",top:"3%"}}
           
         >
           <FaBars />

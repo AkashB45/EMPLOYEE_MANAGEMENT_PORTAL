@@ -23,7 +23,9 @@ const adminSchema = new mongoose.Schema({
         securityQuestion: { type: String, required: true },
         securityAnswer: { type: String, required: true }
     },
-    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Applicant' }],
+    jobs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Jobs' }]
 });
 
 const Admin = mongoose.model('Admin', adminSchema);
