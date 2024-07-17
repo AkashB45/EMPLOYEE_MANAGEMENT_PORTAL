@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Card, Button, Navbar, Nav } from 'react-bootstrap';
-import './AdminWelcome.css'; 
+import './AdminWelcome.css';
 import { CSSTransition } from 'react-transition-group';
 import { FaAngleDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -44,15 +44,16 @@ const AdminWelcome = () => {
       }
     });
   };
-  const StepCard = ({ number, title, description, buttonText, buttonVariant, inView,linkto}) => (
+
+  const StepCard = ({ number, title, description, buttonText, buttonVariant, inView, linkTo }) => (
     <Col md={6} className={`mb-5 ${inView ? 'pulse' : ''}`} ref={ref => stepCardRefs.current.push(ref)}>
       <Card className="step-card p-4 bg-white rounded-lg shadow-lg">
         <h3 className="text-info mb-3">{number}: {title}</h3>
         <p className="text-muted">{description}</p>
-        <Link to={`${linkto}`}>
-        <div className="text-center mt-4">
-          <Button variant={buttonVariant} className="py-2 px-4 rounded-lg shadow-lg">{buttonText}</Button>
-        </div>
+        <Link to={linkTo}>
+          <div className="text-center mt-4">
+            <Button variant={buttonVariant} className="py-2 px-4 rounded-lg shadow-lg">{buttonText}</Button>
+          </div>
         </Link>
       </Card>
     </Col>
@@ -60,53 +61,36 @@ const AdminWelcome = () => {
 
   return (
     <>
-   <Navbar expand="lg" sticky="top" className="shadow-sm"
-      style={{ zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)', color: '#071952', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
-      <Container>
-        <Navbar.Brand href="#home" style={{ color: '#071952', marginLeft: '5rem' }}>OnBoardMaster</Navbar.Brand>
-        {/* Customize the toggle button */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <FaAngleDown style={{ color: '#071952' }} />
-        </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto d-flex justify-content-end align-items-center w-100"
-            style={{ color: '#071952', marginRight: '4rem' }}>
-            <Nav.Link href="#welcome" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Welcome</Nav.Link>
-            <Nav.Link href="#ready-to-start" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Start</Nav.Link>
-            <Nav.Link href="#major-functionality" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Functionality</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-
-
-
-
+      <Navbar expand="lg" sticky="top" className="shadow-sm"
+        style={{ zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)', color: '#071952', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+        <Container>
+          <Navbar.Brand href="#home" style={{ color: '#071952', marginLeft: '5rem' }}>OnBoardMaster</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <FaAngleDown style={{ color: '#071952' }} />
+          </Navbar.Toggle>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto d-flex justify-content-end align-items-center w-100"
+              style={{ color: '#071952', marginRight: '4rem' }}>
+              <Nav.Link href="#welcome" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Welcome</Nav.Link>
+              <Nav.Link href="#ready-to-start" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Start</Nav.Link>
+              <Nav.Link href="#major-functionality" style={{ color: '#071952', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>Functionality</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
       <Container className="mt-2">
         <Card className="p-4 shadow-lg rounded-lg">
           <Row id="welcome">
             {/* Welcome Section */}
-            <Col md={6} className="d-flex align-items-center">
               <CSSTransition in appear timeout={500} classNames="fade">
                 <div className="welcome-text text-center">
                   <h1 className="text-primary mb-3">Welcome to OnBoardMaster, Admin!</h1>
                   <p className="">Let's Get Started with Your Admin Dashboard</p>
                 </div>
               </CSSTransition>
-            </Col>
-
-            {/* Image Section */}
-            <Col md={6} className="text-center">
-              <CSSTransition in appear timeout={500} classNames="fade">
-                <img
-                  src="https://img.freepik.com/free-vector/recruitment-concept-with-tablet_23-2148621833.jpg?t=st=1720761999~exp=1720765599~hmac=07f0b6870009dd108491562cda16f6bd284199b89eea8cf931b3399b8d13e577&w=740"
-                  alt="Recruitment Concept"
-                  className="img-fluid rounded shadow-lg image-transition"
-                />
-              </CSSTransition>
-            </Col>
-          </Row>
+           
+            </Row>
 
           <div className="mt-5 mb-5" id="ready-to-start">
             <h2 className="section-title text-center mb-4">Ready to Start?</h2>
@@ -117,43 +101,43 @@ const AdminWelcome = () => {
                 description="Effortlessly set up your profile with our intuitive process, ensuring security and tailored customization."
                 buttonText="Set Profile"
                 buttonVariant="outline-primary"
-                linkto="/profile"
+                linkTo="/profile"
                 inView={stepInView[0]}
               />
               <StepCard
                 number="Step 2"
-                title="User Management"
-                description="Simplify user creation, modification, and removal with defined roles and permissions."
-                buttonText="Create Users"
+                title="Batch Management"
+                description="Efficiently manage multiple user batches for seamless organization and control, ensuring optimal efficiency and data integrity."
+                buttonText="Create Batches"
                 buttonVariant="outline-primary"
-                linkto="/UserRegisteration"
+                linkTo="/UserRegisteration"
                 inView={stepInView[1]}
               />
             </Row>
             <Row className="mb-5">
               <StepCard
                 number="Step 3"
-                title="Assess applicant"
-                description="Assess applicants to gauge their qualifications and suitability for the position. Use structured evaluations to make informed hiring decisions."
-                buttonText="Analyse"
-                linkto="/ApplicantDetails"
+                title="User Management"
+                description="Simplify user creation, modification, and removal with defined roles and permissions."
+                buttonText="Create Users"
+                linkTo="/UserRegisteration"
                 buttonVariant="outline-primary"
                 inView={stepInView[2]}
               />
               <StepCard
                 number="Step 4"
-                title="Trace the progress"
+                title="Trace the Progress"
                 description="Track applicant interview statuses to monitor their progress through the hiring process and make informed decisions based on detailed feedback."
                 buttonText="Monitor"
                 buttonVariant="outline-primary"
-                linkto="/InterviewProgress"
+                linkTo="/InterviewProgress"
                 inView={stepInView[3]}
               />
             </Row>
           </div>
 
-          {/* Major Functionality Section */}
-          <div className="mt-5" id="major-functionality">
+         {/* Major Functionality Section */}
+         <div className="mt-5" id="major-functionality">
             <h2 className="section-title text-center mb-4">Major Functionality</h2>
             <Row className="mb-8 md:flex md:mb-3 align-items-center">
               <Col md={6} order={1}>
@@ -275,7 +259,6 @@ const AdminWelcome = () => {
               </Col>
             </Row>
           </div>
-
         </Card>
       </Container>
     </>

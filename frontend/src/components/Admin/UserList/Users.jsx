@@ -12,7 +12,6 @@ const Users = ({ user }) => {
           <Card.Text className="text-gray-600 mb-1"><strong>Position:</strong> {user.position}</Card.Text>
           <Card.Text className="text-gray-600 mb-1"><strong>Email:</strong> {user.email}</Card.Text>
           <Card.Text className="text-gray-600 mb-1"><strong>Join Date:</strong> {user.joinDate}</Card.Text>
-          <Card.Text className="text-gray-600 mb-1"><strong>Department:</strong> {user.department}</Card.Text>
           <Card.Text className="text-gray-600 mb-1"><strong>Status:</strong> {user.status}</Card.Text>
           <Card.Text className="text-gray-600 mb-1"><strong>Location:</strong> {user.location}</Card.Text>
         </Card.Body>

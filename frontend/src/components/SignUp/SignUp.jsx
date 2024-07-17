@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
-
 const SignUp = () => {
     const [formData, setFormData] = useState({
         companyName: '',
@@ -20,14 +19,12 @@ const SignUp = () => {
         contactJobTitle: '',
         contactEmail: '',
         contactPhoneNumber: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
-        securityQuestion: '',
-        securityAnswer: '',
+        admins: [{ name: '', email:'', password: ''}],
         agreedToTerms: false
     });
+
     const backgroundImage = "https://img.freepik.com/free-vector/vector-grunge-color-texture_2065-554.jpg?t=st=1720893626~exp=1720897226~hmac=122921af79b70e451af9b31c34ac0a9f1f8f99a0d03c510c59a58964116489b9&w=740";
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
 
@@ -42,6 +39,25 @@ const SignUp = () => {
         }));
     };
 
+    const handleAdminChange = (index, e) => {
+        const { name, value } = e.target;
+        const newAdmins = [...formData.admins];
+        newAdmins[index][name] = value;
+        setFormData({ ...formData, admins: newAdmins });
+    };
+
+    const addAdmin = () => {
+        setFormData(prevState => ({
+            ...prevState,
+            admins: [...prevState.admins, { name: '', email: '', password: '' }]
+        }));
+    };
+
+    const removeAdmin = (index) => {
+        const newAdmins = formData.admins.filter((_, i) => i !== index);
+        setFormData({ ...formData, admins: newAdmins });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission here (e.g., API call, validation)
@@ -49,13 +65,12 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen  flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]"
-         style={{
-            
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        }}>
+        <div className="min-h-screen flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#EBF4F6]"
+            style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
             <div className="absolute inset-0 opacity-60"></div>
             <div className="max-w-4xl w-full bg-white bg-opacity-90 rounded-lg shadow-xl p-8 relative z-10">
                 <h2 className="text-3xl font-bold text-center text-black mb-6">Register Your Company</h2>
@@ -98,11 +113,11 @@ const SignUp = () => {
                             </div>
                             <div>
                                 <label htmlFor="companyZipCode" className="block text-black font-medium mb-1">Zip Code</label>
-                                <input id="companyZipCode" name="companyZipCode" type="text" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Zip Code" />
+                                <input id="companyZipCode" name="companyZipCode" type="number" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Zip Code" />
                             </div>
                             <div>
                                 <label htmlFor="companyPhoneNumber" className="block text-black font-medium mb-1">Phone Number</label>
-                                <input id="companyPhoneNumber" name="companyPhoneNumber" type="tel" maxLength="10" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Phone Number" />
+                                <input id="companyPhoneNumber" name="companyPhoneNumber" type="number" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Phone Number"  />
                             </div>
                             <div>
                                 <label htmlFor="companyEmail" className="block text-black font-medium mb-1">Company Email</label>
@@ -129,35 +144,42 @@ const SignUp = () => {
                             </div>
                             <div>
                                 <label htmlFor="contactPhoneNumber" className="block text-black font-medium mb-1">Phone Number</label>
-                                <input id="contactPhoneNumber" name="contactPhoneNumber" type="tel" maxLength="10" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Phone Number" />
+                                <input id="contactPhoneNumber" name="contactPhoneNumber" type="number" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Phone Number" />
                             </div>
                         </div>
                     </div>
 
-                    {/* Username, Password, Security Questions (Page 3) */}
+                    {/* Admin Details (Page 3) */}
                     <div className="space-y-4">
                         <h3 className="text-xl font-semibold text-black">Admin Details</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label htmlFor="username" className="block text-black font-medium mb-1">Username (Email)</label>
-                                <input id="username" name="username" type="email" required onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Username (Email)" />
+                        {formData.admins.map((admin, index) => (
+                            <div key={index} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label htmlFor={`username-${index}`} className="block text-black font-medium mb-1">Username</label>
+                                    <input id={`username-${index}`} name="username" type="text" required value={admin.name} onChange={(e) => handleAdminChange(index, e)} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Username" />
+                                </div>
+                                <div>
+                                    <label htmlFor={`email-${index}`} className="block text-black font-medium mb-1">Email</label>
+                                    <input id={`email-${index}`} name="email" type="email" required value={admin.email} onChange={(e) => handleAdminChange(index, e)} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Email" />
+                                </div>
+                                <div>
+                                    <label htmlFor={`password-${index}`} className="block text-black font-medium mb-1">Password</label>
+                                    <input id={`password-${index}`} name="password" type="password" required value={admin.password} onChange={(e) => handleAdminChange(index, e)} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="" />
+                                </div>
+                                
+                                {index > 0 && (
+                                    <div className="col-span-2 text-right">
+                                        <button type="button" onClick={() => removeAdmin(index)} className="text-red-500 hover:text-red-700">
+                                            Remove Admin
+                                        </button>
+                                    </div>
+                                )}
                             </div>
-                            <div>
-                                <label htmlFor="password" className="block text-black font-medium mb-1">Password</label>
-                                <input id="password" name="password" type="password" required onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="" />
-                            </div>
-                            <div>
-                                <label htmlFor="confirmPassword" className="block text-black font-medium mb-1">Confirm Password</label>
-                                <input id="confirmPassword" name="confirmPassword" type="password" required onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="" />
-                            </div>
-                            <div>
-                                <label htmlFor="securityQuestion" className="block text-black font-medium mb-1">Security Question</label>
-                                <input id="securityQuestion" name="securityQuestion" type="text" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Security Question" />
-                            </div>
-                            <div>
-                                <label htmlFor="securityAnswer" className="block text-black font-medium mb-1">Security Answer</label>
-                                <input id="securityAnswer" name="securityAnswer" type="text" onChange={handleChange} className="form-control rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Security Answer" />
-                            </div>
+                        ))}
+                        <div className="col-span-2 text-right">
+                            <button type="button" onClick={addAdmin} className="text-blue-500 hover:text-blue-700">
+                                Add Another Admin
+                            </button>
                         </div>
                     </div>
 
@@ -167,8 +189,8 @@ const SignUp = () => {
                             <label htmlFor="agreedToTerms" className="flex items-center">
                                 <input id="agreedToTerms" name="agreedToTerms" type="checkbox" required onChange={handleChange} className="mr-2 leading-tight" />
                                 <span className="text-sm text-black">
-                                    I agree to the 
-                                    <Link to={"/Terms&Conditions"} className="text-indigo-600 underline">Terms of Service</Link>
+                                    I agree to the
+                                    <Link to="/Terms&Conditions" className="text-indigo-600 underline">Terms of Service</Link>
                                 </span>
                             </label>
                         </div>
@@ -182,13 +204,10 @@ const SignUp = () => {
                     </div>
                 </form>
                 <div className="text-center mt-4">
-            <Link
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              to={"/AdminLogIn"}
-            >
-              Already have an Account? LogIn
-            </Link>
-          </div>
+                    <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/AdminLogIn">
+                        Already have an Account? LogIn
+                    </Link>
+                </div>
             </div>
         </div>
     );

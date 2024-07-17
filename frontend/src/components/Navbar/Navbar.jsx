@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'tailwindcss/tailwind.css';
 import { ThemeContext } from '../../Themecontext';
-import { filterPosts, filterUsers, filterApplicants } from './Filters'; // Adjust path as needed
 
 
 const Navbar = () => {
@@ -58,7 +57,7 @@ const Navbar = () => {
               <select
                 className="form-select w-full lg:w-auto rounded-lg bg-gray-100 px-4 py-1 lg:py-2 text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
               >
-                <option value="" disabled selected>
+                <option value="" disabled >
                   Sort by
                 </option>
                 <option value="date">Date</option>
@@ -70,7 +69,7 @@ const Navbar = () => {
               <select
                 className="form-select w-full lg:w-auto rounded-lg bg-gray-100 px-4 py-1 lg:py-2 text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
               >
-                <option value="" disabled selected>
+                <option value="" disabled >
                   Filter by
                 </option>
                 <option value="status">Status</option>

@@ -9,29 +9,35 @@ import UserLogin from './components/Login/UserLogin';
 import AdminLogin from './components/Login/AdminLogin';
 import ForgotPassword from './components/Login/ForgotPassword';
 import SignUp from './components/SignUp/SignUp';
-import UserRegisteration from './components/UserRegisteration/UserRegisteration';
+import UserRegisterationforNewDepartment from './components/Admin/UserRegisteration/UserRegisterationforNewDepartment';
 import JobListingPage from './components/JobListingPage/JobListingPage';
 import Job from './components/JobListingPage/Job';
 import EditJob from './components/JobListingPage/EditJob';
-import Home from './components/HomePage/Home';
 import ContactPage from './components/ContactPage/ContactPage';
 import NotFound from './components/NotFoundPage/NotFoundPage';
 import NewJobForm from './components/NewJobForm/NewJobForm';
 import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
-import UserListingPage from './components/UserListingPage/UserListingPage';
+import UserListingPage from './components/Admin/UserList/UserListingPage';
 import User from './components/UserListingPage/User';
 import EditUser from './components/UserListingPage/EditUser';
 import ApplicantDetails from './components/ApplicantDetails/ApplicantDetails';
 import InterviewProgress from './components/InterviewProgress/InterviewProgress';
 import LandingPage from './components/LandingPage/LandingPage';
 import CreateNewPassword from './components/Login/CreateNewPassword';
-import AdminWelcome from './components/HomePage/Admin/AdminWelcome';
-import AdminDashBoard from './components/HomePage/Admin/AdminDashBoard';
-import UserWelcome from './components/HomePage/User/UserWelcome'
+import AdminWelcome from './components/Admin/DashBoard/AdminWelcome';
+import AdminDashBoard from './components/Admin/DashBoard/AdminDashBoard';
+import UserWelcome from './components/HomePage/DashBoard/UserWelcome'
 import { ThemeContext } from './Themecontext';
 import {useContext} from 'react'
+import DepartmentListUsers from './components/Admin/UserList/DepartmentListUsers';
+import AddDepartmentForm from './components/Admin/UserList/AddDepartmentForm';
+import AddUserToDepartment from './components/Admin/UserList/AddUserToDepartment';
+import DepartmentListJobs from './components/Admin/JobList/DepartmentListJobs';
+import JobInfo from './components/Admin/JobList/JobInfo'
+import UserRegisterationforDepartment from './components/Admin/UserRegisteration/UserRegisterationforDepartment';
+import UserRegisteration from './components/Admin/UserRegisteration/UserRegisteration'
 function App() {
-  const{isOpen,setIsOpen} = useContext(ThemeContext);
+  const{isOpen,setIsOpen,companies} = useContext(ThemeContext);
   const location = useLocation();
   const endpoint = location.pathname;
   console.log(endpoint);
@@ -53,18 +59,35 @@ function App() {
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-        <Route path="/Home" element={<Home/>} />
         <Route path="/Application" element={<ApplicationForm />} />
         <Route path="/JobList">
         <Route index element={<JobListingPage />} />
         <Route path=":id" element={<Job />} />
         <Route path="edit/:id" element={<EditJob />} />
         </Route>
-        <Route path="/UserList">
+        //AdminDepartmentUsersView
+        <Route path="/DepartmentListUsers">
+        <Route index element={<DepartmentListUsers />} />
+        <Route path="AddDepartmentForm" element={<AddDepartmentForm  />} />
+        <Route path="UserRegisteration" element={<UserRegisterationforNewDepartment/>} />
+        <Route path=":name">
+        <Route index element={<UserListingPage />} />
+        <Route path="AddUserToDepartment" >
+        <Route index element={<AddUserToDepartment/>} />
+        <Route path="UserRegisterationforDepartment" element={<UserRegisterationforDepartment/>} />
+        </Route>  
+        </Route>
+        </Route>
+        //AdminDepartmentJobsView
+        <Route path="/DepartmentListJobs">
+        <Route index element={<DepartmentListJobs />} />
+        <Route path=":name" element={<JobInfo/>} />
+        </Route>
+        {/* <Route path="/UserList">
         <Route index element={<UserListingPage />} />
         <Route path=":id" element={<User />} />
         <Route path="edit/:id" element={<EditUser />} />
-        </Route>
+        </Route> */}
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />
         <Route path="/UserRegisteration" element={<UserRegisteration />} />
@@ -74,11 +97,13 @@ function App() {
         <Route path="/Terms&Conditions" element={<TermsAndConditions/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
         <Route path="/NewJobForm" element={<NewJobForm/>} />
-        <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
-        <Route path="/InterviewProgress" element={<InterviewProgress/>} />
+        {/* <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
+        <Route path="/InterviewProgress" element={<InterviewProgress/>} /> */}
         <Route path="/AdminWelcome" element={<AdminWelcome/>} />
         <Route path="/UserWelcome" element={<UserWelcome/>} />
         <Route path="/AdminDashBoard" element={<AdminDashBoard/>} />
+        {/* <Route path="/JobInfo" element={<JobInfo/>} /> */}
+        
         <Route path="/*" element={<NotFound/>} />
       </Routes>
     </div>

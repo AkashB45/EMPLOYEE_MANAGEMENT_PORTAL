@@ -6,74 +6,223 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   const[search,setSearch]  = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: 'Frontend Developer',
-      company: 'Tech Innovators',
-      location: 'New York, NY',
-      type: 'Full-time',
-      salary: '$70,000 - $90,000',
-      description: 'We are looking for a skilled Frontend Developer to join our team. You will be responsible for developing and maintaining web applications using React.js and other modern web technologies.',
-      postedDate: '2024-06-01',
-      skills: ['React.js', 'JavaScript', 'HTML', 'CSS'],
-    },
-    {
-      id: 2,
-      title: 'Backend Developer',
-      company: 'Data Solutions',
-      location: 'San Francisco, CA',
-      type: 'Full-time',
-      salary: '$80,000 - $100,000',
-      description: 'Join our team as a Backend Developer, working with Node.js and Express.js to build scalable and efficient server-side applications.',
-      postedDate: '2024-06-05',
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'SQL'],
-    },
-    {
-      id: 3,
-      title: 'UI/UX Designer',
-      company: 'Creative Minds',
-      location: 'Austin, TX',
-      type: 'Part-time',
-      salary: '$40,000 - $60,000',
-      description: 'We are seeking a talented UI/UX Designer to create engaging and user-friendly interfaces for our web and mobile applications.',
-      postedDate: '2024-06-10',
-      skills: ['Sketch', 'Figma', 'Adobe XD', 'User Research'],
-    },
-    {
-      id: 4,
-      title: 'Project Manager',
-      company: 'Business Corp',
-      location: 'Remote',
-      type: 'Contract',
-      salary: '$50,000 - $70,000',
-      description: 'As a Project Manager, you will be responsible for overseeing project timelines, coordinating with teams, and ensuring successful project delivery.',
-      postedDate: '2024-06-12',
-      skills: ['Project Management', 'Agile', 'Scrum', 'Leadership'],
-    },
-    {
-      id: 5,
-      title: 'Data Scientist',
-      company: 'Analytics Pro',
-      location: 'Boston, MA',
-      type: 'Full-time',
-      salary: '$90,000 - $120,000',
-      description: 'We are looking for a Data Scientist to analyze complex data sets, develop predictive models, and provide actionable insights to our clients.',
-      postedDate: '2024-06-15',
-      skills: ['Python', 'R', 'Machine Learning', 'Data Analysis'],
-    },
-    {
-      id: 6,
-      title: 'Marketing Specialist',
-      company: 'Brand Masters',
-      location: 'Chicago, IL',
-      type: 'Full-time',
-      salary: '$50,000 - $70,000',
-      description: 'Join our marketing team as a Marketing Specialist, creating and implementing marketing strategies to enhance brand awareness and drive sales.',
-      postedDate: '2024-06-20',
-      skills: ['SEO', 'Content Marketing', 'Social Media', 'Analytics'],
-    },
-  ]);
+  const [companies,setCompanies] = useState(
+    [
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4567",
+        "companyName": "Tech Solutions",
+        "legalEntityType": "LLC",
+        "industry": "Software",
+        "companyWebsite": "www.techsolutions.com",
+        "companyAddress": "123 Tech Street",
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "zipCode": 94107,
+        "phoneNumber": 1234567890,
+        "companyEmail": "info@techsolutions.com",
+        "primaryContact": {
+          "fullName": "John Doe",
+          "jobTitle": "CEO",
+          "emailAddress": "john.doe@techsolutions.com",
+          "phoneNumber": 1234567890
+        },
+        "adminDetails": [
+          "60c72b2f9b1d4e1b6c8b4568",
+          "60c72b2f9b1d4e1b6c8b4569"
+        ],
+        "department": [
+          "60c72b2f9b1d4e1b6c8b4570",
+          "60c72b2f9b1d4e1b6c8b4578"
+        ]
+      }
+    ]
+    
+  )
+  const [departments,setDepartments] = useState(
+    [
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4570",
+        "name": "Engineering",
+        "description": "Handles all engineering tasks",
+        "users": [
+          "60c72b2f9b1d4e1b6c8b4571",
+          "60c72b2f9b1d4e1b6c8b4572"
+        ],
+        "jobs": [
+          "60c72b2f9b1d4e1b6c8b4573",
+          "60c72b2f9b1d4e1b6c8b4576"
+        ]
+      },
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4578",
+        "name": "Marketing",
+        "description": "Handles all marketing tasks",
+        "users": [
+          "60c72b2f9b1d4e1b6c8b4579"
+        ],
+        "jobs": [
+          "60c72b2f9b1d4e1b6c8b4580"
+        ]
+      }
+    ]
+    
+  );
+  const [jobs,setJobs] = useState(
+    [
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4573",
+        "title": "Frontend Developer",
+        "description": "Develop and maintain web applications",
+        "type": "Full-Time",
+        "salary": "$120,000",
+        "postedDate": "2023-06-01",
+        "location": "San Francisco",
+        "qualification": "Bachelor's in Computer Science",
+        "experience": "3 years",
+        "skills": ["React", "JavaScript", "CSS"],
+        "vacancy": 3,
+        "selected": 1,
+        "rejected": 2,
+        "inprogress": 0,
+        "applicants": [
+          "60c72b2f9b1d4e1b6c8b4574",
+          "60c72b2f9b1d4e1b6c8b4575"
+        ]
+      },
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4576",
+        "title": "Backend Developer",
+        "description": "Develop and maintain server-side applications",
+        "type": "Full-Time",
+        "salary": "$130,000",
+        "postedDate": "2023-07-01",
+        "location": "San Francisco",
+        "qualification": "Bachelor's in Computer Science",
+        "experience": "4 years",
+        "skills": ["Node.js", "JavaScript", "MongoDB"],
+        "vacancy": 2,
+        "selected": 1,
+        "rejected": 1,
+        "inprogress": 0,
+        "applicants": [
+          "60c72b2f9b1d4e1b6c8b4577"
+        ]
+      },
+      {
+        "_id": "60c72b2f9b1d4e1b6c8b4580",
+        "title": "Digital Marketer",
+        "description": "Develop and execute marketing strategies",
+        "type": "Full-Time",
+        "salary": "$90,000",
+        "postedDate": "2023-06-15",
+        "location": "San Francisco",
+        "qualification": "Bachelor's in Marketing",
+        "experience": "2 years",
+        "skills": ["SEO", "Google Analytics", "Content Marketing"],
+        "vacancy": 1,
+        "selected": 0,
+        "rejected": 1,
+        "inprogress": 0,
+        "applicants": [
+          "60c72b2f9b1d4e1b6c8b4581"
+        ]
+      }
+    ]  
+  );
+  
+    const [users, setUsers] = useState(
+      [
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4571",
+          "name": "Alice Johnson",
+          "position": "Software Engineer",
+          "email": "alice.johnson@techsolutions.com",
+          "password": "hashedpassword",
+          "joinDate": "2021-05-10",
+          "status": "Active",
+          "location": "San Francisco"
+        },
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4572",
+          "name": "Bob Martin",
+          "position": "DevOps Engineer",
+          "email": "bob.martin@techsolutions.com",
+          "password": "hashedpassword",
+          "joinDate": "2022-01-15",
+          "status": "Active",
+          "location": "San Francisco"
+        },
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4579",
+          "name": "Eve Black",
+          "position": "Marketing Manager",
+          "email": "eve.black@techsolutions.com",
+          "password": "hashedpassword",
+          "joinDate": "2020-03-12",
+          "status": "Active",
+          "location": "San Francisco"
+        }
+      ]
+      
+    );
+    const [applicants,setApplicants]=useState(
+      [
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4574",
+          "name": "Bob Brown",
+          "email": "bob.brown@example.com",
+          "contactNo": 9876543210,
+          "position": "Frontend Developer",
+          "department": "Engineering",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "qualification": "Bachelor's in Computer Science",
+          "experience": "2 years",
+          "skills": ["React", "JavaScript", "CSS"],
+          "status": "New"
+        },
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4575",
+          "name": "Sara White",
+          "email": "sara.white@example.com",
+          "contactNo": 1234567891,
+          "position": "Frontend Developer",
+          "department": "Engineering",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "qualification": "Master's in Computer Science",
+          "experience": "4 years",
+          "skills": ["React", "JavaScript", "HTML"],
+          "status": "Interview"
+        },
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4577",
+          "name": "Tom Harris",
+          "email": "tom.harris@example.com",
+          "contactNo": 9876543211,
+          "position": "Backend Developer",
+          "department": "Engineering",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "qualification": "Bachelor's in Computer Science",
+          "experience": "3 years",
+          "skills": ["Node.js", "JavaScript", "MongoDB"],
+          "status": "Accepted"
+        },
+        {
+          "_id": "60c72b2f9b1d4e1b6c8b4581",
+          "name": "Linda Green",
+          "email": "linda.green@example.com",
+          "contactNo": 1234567892,
+          "position": "Digital Marketer",
+          "department": "Marketing",
+          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
+          "qualification": "Bachelor's in Marketing",
+          "experience": "1 year",
+          "skills": ["SEO", "Google Analytics", "Content Marketing"],
+          "status": "Rejected"
+        }
+      ]
+      
+    )
     const styles = {
       container: {
         display: 'flex',
@@ -85,51 +234,8 @@ export const ThemeProvider = ({ children }) => {
         
       },
     }
-    const [users, setUsers] = useState([
-      { id: 1, name: 'John Doe', position: 'Developer', email: 'john.doe@example.com', joinDate: '2023-01-15', department: 'Engineering', status: 'Active', location: 'New York' },
-      { id: 2, name: 'Jane Smith', position: 'Designer', email: 'jane.smith@example.com', joinDate: '2022-05-23', department: 'Design', status: 'Active', location: 'San Francisco' },
-      { id: 3, name: 'Alex Johnson', position: 'Manager', email: 'alex.johnson@example.com', joinDate: '2021-08-30', department: 'Management', status: 'On Leave', location: 'Chicago' },
-      { id: 4, name: 'Emily Davis', position: 'QA Engineer', email: 'emily.davis@example.com', joinDate: '2022-12-12', department: 'Quality Assurance', status: 'Active', location: 'Boston' },
-      { id: 5, name: 'Michael Brown', position: 'DevOps Engineer', email: 'michael.brown@example.com', joinDate: '2023-03-19', department: 'Engineering', status: 'Active', location: 'Seattle' },
-      { id: 6, name: 'Sarah Wilson', position: 'Product Owner', email: 'sarah.wilson@example.com', joinDate: '2020-11-10', department: 'Product', status: 'Active', location: 'Los Angeles' },
-      { id: 7, name: 'David Lee', position: 'UI/UX Designer', email: 'david.lee@example.com', joinDate: '2021-02-22', department: 'Design', status: 'Inactive', location: 'Austin' },
-      { id: 8, name: 'Laura Martinez', position: 'Scrum Master', email: 'laura.martinez@example.com', joinDate: '2019-07-15', department: 'Management', status: 'Active', location: 'Denver' },
-      { id: 9, name: 'James White', position: 'Backend Developer', email: 'james.white@example.com', joinDate: '2022-11-03', department: 'Engineering', status: 'Active', location: 'Portland' },
-      { id: 10, name: 'Jessica Green', position: 'Frontend Developer', email: 'jessica.green@example.com', joinDate: '2021-04-17', department: 'Engineering', status: 'Active', location: 'San Diego' },
-    ]);
-    const [applicants,setApplicants]=useState(
-      [
-        {
-          "id": 1,
-          "name": "John Doe",
-          "email": "johndoe@example.com",
-          "contactNo": "+1-123-456-7890",
-          "position": "Software Engineer",
-          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
-          "status": "New"
-        },
-        {
-          "id": 2,
-          "name": "Jane Smith",
-          "email": "janesmith@example.com",
-          "contactNo": "+1-234-567-8901",
-          "position": "UX/UI Designer",
-          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
-          "status": "New"
-        },
-        {
-          "id": 3,
-          "name": "Michael Johnson",
-          "email": "michaeljohnson@example.com",
-          "contactNo": "+1-345-678-9012",
-          "position": "Data Analyst",
-          "resume": "https://drive.google.com/file/d/15Dr26BDssMJSZMDIEURbrCyHLxLbY9SK/view",
-          "status": "New"
-        }
-      ])
-
   return (
-    <ThemeContext.Provider value={{ theme, setTheme,posts,setPosts,styles,users,setUsers,applicants,setApplicants,search,setSearch,isOpen,setIsOpen}}>
+    <ThemeContext.Provider value={{ theme, setTheme,styles,users,setUsers,applicants,setApplicants,search,setSearch,isOpen,setIsOpen,jobs,setJobs,departments,setDepartments,companies,setCompanies}}>
       {children}
     </ThemeContext.Provider>
   );

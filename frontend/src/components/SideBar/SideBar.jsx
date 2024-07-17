@@ -27,7 +27,7 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm">
-                  <Link to={"/Home"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                  <Link to={"/AdminDashBoard"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaHome />
                     <span>Home</span>
                   </Link>
@@ -38,18 +38,30 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                     <span>User Registeration</span>
                   </Link>
                 </li>
-                <li className="rounded-sm">
+                {/* <li className="rounded-sm">
                   <Link to={"/JobList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaInfo />
                     <span>Job List</span>
                   </Link>
+                </li> */}
+                <li className="rounded-sm">
+                  <Link to={"/DepartmentListUsers"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaInfo />
+                    <span>Users List</span>
+                  </Link>
                 </li>
                 <li className="rounded-sm">
+                  <Link to={"/DepartmentListJobs"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaInfo />
+                    <span>Jobs List</span>
+                  </Link>
+                </li>
+                {/* <li className="rounded-sm">
                   <Link to={"/UserList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaInfo />
                     <span>User List</span>
                   </Link>
-                </li>
+                </li> */}
                 <li className="rounded-sm">
                   <Link to={"/application"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaServicestack />

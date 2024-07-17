@@ -1,10 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useLocation} from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
-const UserRegistration = () => {
+const UserRegisterationforNewDepartment = () => {
   const { users, setUsers } = useContext(ThemeContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -14,23 +15,20 @@ const UserRegistration = () => {
     location: '',
     status: 'Active',
     joinDate: format(new Date(), 'yyyy-MM-dd'),
-    department: 'Management',
+    password: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newUser = { ...formData, id: users.length + 1 }; // Assuming id is incremented by length
+    const newUser = { ...formData, _id: uuidv4(), password: uuidv4() };
     setUsers([...users, newUser]);
     console.log('New User Added:', newUser);
-    navigate('/userList');
+    navigate('/DepartmentListUsers/AddDepartmentForm', { state: { newUser } });
   };
 
   const backgroundImageStyle = {
@@ -107,11 +105,10 @@ const UserRegistration = () => {
           >
             Register
           </Button>
-        
         </Form>
       </Container>
     </div>
   );
 };
 
-export default UserRegistration;
+export default UserRegisterationforNewDepartment;

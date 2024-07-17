@@ -4,7 +4,6 @@
 export const filterPosts = (posts, searchQuery) => {
     return posts.filter(post =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.type.toLowerCase().includes(searchQuery.toLowerCase())
@@ -16,8 +15,13 @@ export const filterPosts = (posts, searchQuery) => {
     return users.filter(user =>
       user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      user.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.location.toLowerCase().includes(searchQuery.toLowerCase())
+      
+    );
+  };
+  export const filterJobs = (jobs, searchQuery) => {
+    return jobs.filter(job =>
+      job.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   };
   
