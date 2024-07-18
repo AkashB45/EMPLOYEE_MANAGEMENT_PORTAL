@@ -43,8 +43,8 @@ export const ThemeProvider = ({ children }) => {
     [
       {
         "_id": "60c72b2f9b1d4e1b6c8b4570",
-        "name": "Engineering",
-        "description": "Handles all engineering tasks",
+        "name": "Developer",
+        "description": "Handles all Developing tasks",
         "users": [
           "60c72b2f9b1d4e1b6c8b4571",
           "60c72b2f9b1d4e1b6c8b4572"
@@ -166,6 +166,16 @@ export const ThemeProvider = ({ children }) => {
       ]
       
     );
+    const [currentUser,setCurrentUser] = useState({
+      "_id": "60c72b2f9b1d4e1b6c8b4571",
+      "name": "Alice Johnson",
+      "position": "Software Engineer",
+      "email": "alice.johnson@techsolutions.com",
+      "password": "hashedpassword",
+      "joinDate": "2021-05-10",
+      "status": "Active",
+      "location": "San Francisco"
+    });
     const [applicants,setApplicants]=useState(
       [
         {
@@ -235,7 +245,7 @@ export const ThemeProvider = ({ children }) => {
       },
     }
   return (
-    <ThemeContext.Provider value={{ theme, setTheme,styles,users,setUsers,applicants,setApplicants,search,setSearch,isOpen,setIsOpen,jobs,setJobs,departments,setDepartments,companies,setCompanies}}>
+    <ThemeContext.Provider value={{ theme, setTheme,styles,users,setUsers,applicants,setApplicants,search,setSearch,isOpen,setIsOpen,jobs,setJobs,departments,setDepartments,companies,setCompanies,currentUser,setCurrentUser}}>
       {children}
     </ThemeContext.Provider>
   );

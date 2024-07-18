@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'tailwindcss/tailwind.css';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 
 
 const Navbar = () => {

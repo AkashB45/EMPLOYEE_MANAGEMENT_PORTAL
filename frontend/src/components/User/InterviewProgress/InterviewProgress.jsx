@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { ThemeContext } from '../../Themecontext';
-import NavBar from '../Navbar/Navbar';
+import { ThemeContext } from '../../../Themecontext';
+import NavBar from '../../Global/Navbar/Navbar';
 // import './ApplicantDetails.css';
-import { filterPosts, filterUsers, filterApplicants } from '../Navbar/Filters'; // Adjust path as needed
+import { filterPosts, filterUsers, filterApplicants } from '../../Global/Navbar/Filters'; // Adjust path as needed
 
 const InterviewProgress = () => {
   const { applicants, setApplicants,search } = useContext(ThemeContext);

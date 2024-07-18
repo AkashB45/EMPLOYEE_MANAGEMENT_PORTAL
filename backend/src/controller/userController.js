@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const {format} = require('date-fns')
 const postUser = async (req, res) => {
     try {
-        const { id,name, position, email, location, department } = req.body;
+        const {name, position, email, location, department } = req.body;
 
         // Check if the email already exists
         const existingUser = await userModel.findOne({ email: email });
@@ -13,14 +13,14 @@ const postUser = async (req, res) => {
 
         // If the email does not exist, create a new user
         const newUser = new userModel({
-            id, // Assuming id should be generated using uuid
+             // Assuming id should be generated using uuid
             name,
             position,
             email,
             password: uuidv4(), // Generate a password using uuidv4 or use req.body.password if provided
             location,
             department,
-            joinDate: format(Date.now(), "yyyy-MM-dd"),
+            joinDate: format(Date.now(),"yyyy-MM-dd"),
             status: "Active",
         });
 

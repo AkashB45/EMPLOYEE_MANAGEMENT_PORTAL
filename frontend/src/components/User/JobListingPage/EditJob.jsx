@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 import { Form, Button, Container } from 'react-bootstrap';
 
 const EditJob = () => {

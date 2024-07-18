@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Card, Button, Container } from 'react-bootstrap';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 
 const User = () => {
   const { users, setUsers } = useContext(ThemeContext);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams, Navigate, Route, Router, Routes, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {format} from 'date-fns' 

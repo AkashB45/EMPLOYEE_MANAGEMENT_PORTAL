@@ -29,7 +29,7 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                 <li className="rounded-sm">
                   <Link to={"/AdminDashBoard"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaHome />
-                    <span>Home</span>
+                    <span>Admin DashBoard</span>
                   </Link>
                 </li>
                 <li className="rounded-sm">
@@ -38,12 +38,7 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                     <span>User Registeration</span>
                   </Link>
                 </li>
-                {/* <li className="rounded-sm">
-                  <Link to={"/JobList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
-                    <FaInfo />
-                    <span>Job List</span>
-                  </Link>
-                </li> */}
+                
                 <li className="rounded-sm">
                   <Link to={"/DepartmentListUsers"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaInfo />
@@ -63,9 +58,21 @@ const SideBar = ({ toggleSidebar, isOpen }) => {
                   </Link>
                 </li> */}
                 <li className="rounded-sm">
+                  <Link to={"/UserDashBoard"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaHome />
+                    <span>User DashBoard</span>
+                  </Link>
+                </li>
+                <li className="rounded-sm">
                   <Link to={"/application"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                     <FaServicestack />
                     <span>Application Form</span>
+                  </Link>
+                </li>
+                <li className="rounded-sm">
+                  <Link to={"/AddJobList"} className="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
+                    <FaInfo />
+                    <span>Post Jobs</span>
                   </Link>
                 </li>
                 <li className="rounded-sm">

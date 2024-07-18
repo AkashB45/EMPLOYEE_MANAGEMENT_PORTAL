@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../../../Themecontext';
 import Users from './Users';
-import NavBar from '../../Navbar/Navbar';
+import NavBar from '../../Global/Navbar/Navbar';
 import './UserListingPage.css';
-import { filterUsers } from '../../Navbar/Filters';
+import { filterUsers } from '../../Global/Navbar/Filters';
 
 const UserListingPage = () => {
   const { departments, search, users } = useContext(ThemeContext);

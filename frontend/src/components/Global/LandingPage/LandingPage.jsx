@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../index.css'; // Ensure you have the correct path to your CSS file
+import '../../../index.css'; // Ensure you have the correct path to your CSS file
 import { Zoom, Fade } from 'react-awesome-reveal'; // Importing animations from react-awesome-reveal
 import { Link } from 'react-router-dom';
 

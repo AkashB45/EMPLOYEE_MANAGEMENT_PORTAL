@@ -1,21 +1,20 @@
-import { useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Form, Button, Container } from 'react-bootstrap';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicationForm = () => {
+  const { jobs,setJobs, applicants, setApplicants } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     contactNo: '',
-    position: '',
+    position: [],
     resume: null,
-    status:'New'
+    status: 'New'
   });
-  
-  const { applicants, setApplicants } = useContext(ThemeContext);
-  
+
   const onDrop = (acceptedFiles) => {
     setFormData({ ...formData, resume: acceptedFiles[0] });
   };
@@ -25,18 +24,57 @@ const ApplicationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name === 'position') {
+      const options = e.target.options;
+      const selectedOptions = [];
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+          selectedOptions.push(options[i].value);
+        }
+      }
+      setFormData({
+        ...formData,
+        [name]: selectedOptions,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const resumeUrl = URL.createObjectURL(formData.resume); // Create a temporary URL for the file
-    const newApplicant = { ...formData, id: applicants.length + 1, resume: resumeUrl };
-    setApplicants([...applicants, newApplicant]);
-    navigate('/ApplicantDetails');
+
+    formData.position.forEach(jobId => {
+      const newApplicant = { 
+        ...formData, 
+        _id: `app-${Date.now()}-${jobId}`, 
+        position: jobId, 
+        resume: resumeUrl 
+      };
+
+      setApplicants(prevApplicants => [...prevApplicants, newApplicant]);
+
+      const jobIndex = jobs.findIndex(job => job._id === jobId);
+      if (jobIndex !== -1) {
+        jobs[jobIndex] = {
+          ...jobs[jobIndex],
+          applicants: [...jobs[jobIndex].applicants, newApplicant._id],
+          inprogress: jobs[jobIndex].inprogress + 1 // Increment in-progress count
+        };
+      }
+    });
+    setFormData({ // Clear form data after submission
+      name: '',
+      email: '',
+      contactNo: '',
+      position: [],
+      resume: null,
+      status: 'New'
+    });
   };
 
   const backgroundImageStyle = {
@@ -97,14 +135,20 @@ const ApplicationForm = () => {
           <Form.Group controlId="formPosition" className="mb-4">
             <Form.Label className="text-left">Job Position</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               name="position"
+              multiple
               value={formData.position}
               onChange={handleChange}
-              placeholder="Enter the job position you are applying for"
               className="border-2 border-gray-300 p-2 rounded-lg w-full"
               required
-            />
+            >
+              {jobs.map(job => (
+                <option key={job._id} value={job._id}>
+                  {job.title}
+                </option>
+              ))}
+            </Form.Control>
           </Form.Group>
 
           <Form.Group controlId="formResume" className="mb-3">

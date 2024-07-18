@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../../Themecontext';
-import NavBar from '../../Navbar/Navbar';
+import NavBar from '../../Global/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import { filterDepartments } from '../../Global/Navbar/Filters';
 
 const DepartmentListJobs = () => {
-  const { companies, departments } = useContext(ThemeContext);
+  const { companies, departments, search } = useContext(ThemeContext);
+
+  // Filter departments that belong to the company and match the search query
+  const filteredDepartments = filterDepartments(departments, search);
 
   // Assuming you want to check for the first company in the array
   const company = companies[0];
 
   // Filter departments that belong to the company
-  const companyDepartments = departments.filter(department => company.department.includes(department._id));
+  const companyDepartments = filteredDepartments.filter(department => company.department.includes(department._id));
 
   return (
     <div>

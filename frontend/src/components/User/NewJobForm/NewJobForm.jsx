@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 import { Form, Button, Container } from 'react-bootstrap';
 
 const NewJobForm = () => {
@@ -68,18 +68,7 @@ const NewJobForm = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="formCompany" className="mb-4">
-            <Form.Label>Company</Form.Label>
-            <Form.Control
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              placeholder="Enter company name"
-              className="border-2 border-gray-300 p-2 rounded-lg"
-              required
-            />
-          </Form.Group>
+          
 
           <Form.Group controlId="formLocation" className="mb-4">
             <Form.Label>Location</Form.Label>
@@ -107,18 +96,7 @@ const NewJobForm = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="formCreatedAt" className="mb-4">
-            <Form.Label>Posted On</Form.Label>
-            <Form.Control
-              type="date"
-              name="postedDate"
-              value={formData.postedDate}
-              onChange={handleChange}
-              placeholder="Enter created at date"
-              className="border-2 border-gray-300 p-2 rounded-lg"
-              required
-            />
-          </Form.Group>
+          
 
           <Form.Group controlId="formSalary" className="mb-4">
             <Form.Label>Salary</Form.Label>

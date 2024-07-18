@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams, Link, useHistory, useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
-import { ThemeContext } from '../../Themecontext';
+import { ThemeContext } from '../../../Themecontext';
 
 const EditUser = () => {
   const { id } = useParams();
