@@ -28,7 +28,7 @@ const UserListingPage = () => {
   const departmentUserIds = department.users;
   const departmentUsers = users.filter(user => departmentUserIds.includes(user._id));
   const filteredUsers = filterUsers(departmentUsers, search);
-
+  console.log(filteredUsers);
   return (
     <div>
       <NavBar />

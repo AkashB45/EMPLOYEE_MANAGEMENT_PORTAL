@@ -26,6 +26,7 @@ import LandingPage from './components/Global/LandingPage/LandingPage';
 import CreateNewPassword from './components/Global/Login/CreateNewPassword';
 import AdminWelcome from './components/Admin/DashBoard/AdminWelcome';
 import AdminDashBoard from './components/Admin/DashBoard/AdminDashBoard';
+import ProfilePage from './components/Admin/Profile/ProfilePage';
 import UserWelcome from './components/User/DashBoard/UserWelcome'
 import { ThemeContext } from './Themecontext';
 import {useContext} from 'react'
@@ -73,9 +74,10 @@ function App() {
         //Admin
         <Route path="/AdminWelcome" element={<AdminWelcome/>} />
         <Route path="/AdminDashBoard" element={<AdminDashBoard/>} />
+        <Route path="Profile" element={<ProfilePage/>}/>
         //AdminDepartmentUsersView
         <Route path="/DepartmentListUsers">
-        <Route index element={<DepartmentListUsers />} />
+        <Route index element={<DepartmentListUsers/>} />
         <Route path="AddDepartmentForm" element={<AddDepartmentForm  />} />
         <Route path="UserRegisteration" element={<UserRegisterationforNewDepartment/>} />
         <Route path=":name">
@@ -104,19 +106,14 @@ function App() {
         
         <Route path="/AddJobList">
         <Route index element={<JobListingPage />} />
-        <Route path=":id" element={<Job />} />
-        <Route path="edit/:id" element={<EditJob />} />
+        {/* <Route path=":id" element={<Job />} />
+        <Route path="edit/:id" element={<EditJob />} /> */}
         <Route path="NewJobForm/:id" element={<NewJobForm/>} />
         </Route>
-        {/* <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
-        <Route path="/InterviewProgress" element={<InterviewProgress/>} /> */}
+        <Route path="/ApplicantDetails" element={<ApplicantDetails/>} />
+        <Route path="/InterviewProgress" element={<InterviewProgress/>} />
         
         <Route path="/Application" element={<ApplicationForm />} />
-        <Route path="/JobList">
-        <Route index element={<JobListingPage />} />
-        <Route path=":id" element={<Job />} />
-        <Route path="edit/:id" element={<EditJob />} />
-        </Route>
         //Not Found
         <Route path="/*" element={<NotFound/>} />
       </Routes>

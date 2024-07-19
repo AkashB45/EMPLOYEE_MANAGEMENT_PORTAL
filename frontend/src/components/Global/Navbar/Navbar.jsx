@@ -52,7 +52,7 @@ const Navbar = () => {
             </svg>
           </form>
           <div className="flex flex-row lg:flex-row lg:space-x-10 w-full lg:w-auto space-y-0 lg:space-y-0">
-            {/* Add your sorting and filtering options here */}
+            {/* //Add your sorting and filtering options here */}
             <div className="relative w-full lg:w-auto">
               <select
                 className="form-select w-full lg:w-auto rounded-lg bg-gray-100 px-4 py-1 lg:py-2 text-gray-800 shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"

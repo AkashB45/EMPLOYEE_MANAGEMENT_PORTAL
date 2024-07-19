@@ -1,19 +1,45 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../../Themecontext';
 import NavBar from '../../Global/Navbar/Navbar';
 import './ApplicantDetails.css';
-import { filterPosts, filterUsers, filterApplicants } from '../../Global/Navbar/Filters'; // Adjust path as needed
+import { filterApplicants } from '../../Global/Navbar/Filters'; // Adjust path as needed
 
 const ApplicationDetails = () => {
-  const { applicants, setApplicants,search } = useContext(ThemeContext);
-  const filteredApplicants = filterApplicants(applicants, search);
+  const { applicants, setApplicants, search, currentUser, departments, jobs } = useContext(ThemeContext);
+
+  // Find the department of the current user
+  const userDepartment = departments.find(department =>
+    department.users.includes(currentUser._id)
+  );
+
+  // Get job IDs of the user's department
+  const departmentJobIds = userDepartment ? userDepartment.jobs : [];
+
+  // Get jobs in the user's department
+  const departmentJobs = jobs.filter(job => departmentJobIds.includes(job._id));
+
+  // Get applicant IDs from the jobs in the user's department
+  const departmentApplicantIds = departmentJobs.reduce((acc, job) => {
+    return acc.concat(job.applicants);
+  }, []);
+
+  // Filter applicants based on the applicant IDs from the department jobs
+  const departmentApplicants = applicants.filter(applicant =>
+    departmentApplicantIds.includes(applicant._id)
+  );
+
+  // Filter applicants based on search criteria
+  const filteredApplicants = filterApplicants(departmentApplicants, search);
+
+  // Handle status change for an applicant
   const handleStatusChange = (id, newStatus) => {
-    const updatedApplicants = applicants.map((applicant) =>
-      applicant.id === id ? { ...applicant, status: newStatus } : applicant
+    const updatedApplicants = applicants.map(applicant =>
+      applicant._id === id ? { ...applicant, status: newStatus } : applicant
     );
     setApplicants(updatedApplicants);
   };
 
+  // Get status class for styling
   const getStatusClass = (status) => {
     switch (status) {
       case 'New':
@@ -43,7 +69,7 @@ const ApplicationDetails = () => {
             <table className="min-w-full bg-white">
               <thead className="bg-gray-800 text-white">
                 <tr>
-                  <th className="w-1/12 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                  <th className="w-1/12 text-left py-3 px-4 uppercase font-semibold text-sm">Sno</th>
                   <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
                   <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
                   <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">Contact No</th>
@@ -53,9 +79,9 @@ const ApplicationDetails = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-700">
-                {filteredApplicants.map((applicant) => (
-                  <tr key={applicant.id} className="bg-gray-100">
-                    <td className="text-left py-3 px-4">{applicant.id}</td>
+                {filteredApplicants.map((applicant, index) => (
+                  <tr key={applicant._id} className="bg-gray-100">
+                    <td className="text-left py-3 px-4">{index + 1}</td>
                     <td className="text-left py-3 px-4">{applicant.name}</td>
                     <td className="text-left py-3 px-4">
                       <a href={`mailto:${applicant.email}`} className="text-blue-500 hover:underline">
@@ -65,14 +91,14 @@ const ApplicationDetails = () => {
                     <td className="text-left py-3 px-4">{applicant.contactNo}</td>
                     <td className="text-left py-3 px-4">{applicant.position}</td>
                     <td className="text-left py-3 px-4">
-                      <a href={applicant.resume} target="_blank"className="text-blue-500 hover:underline">
+                      <a href={applicant.resume} target="_blank" className="text-blue-500 hover:underline">
                         View Resume
                       </a>
                     </td>
                     <td className="text-left py-3 px-4">
                       <select
                         value={applicant.status}
-                        onChange={(e) => handleStatusChange(applicant.id, e.target.value)}
+                        onChange={(e) => handleStatusChange(applicant._id, e.target.value)}
                         className={`p-2 rounded-lg ${getStatusClass(applicant.status)}`}
                       >
                         <option value="New" className="bg-blue-500 text-white">New</option>

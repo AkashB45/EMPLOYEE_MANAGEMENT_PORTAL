@@ -5,7 +5,7 @@ import './Users.css'; // Assuming you have the CSS in this file
 
 const Users = ({ user }) => {
   return (
-    <Link to={`${user.id}`} className="block">
+    <Link to={`${user._id}`} className="block">
       <Card className="p-4 bg-gray-200 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 transform hover:scale-105 fixed-size-card">
         <Card.Body>
           <Card.Title className="text-xl font-bold mb-2">{user.name}</Card.Title>
